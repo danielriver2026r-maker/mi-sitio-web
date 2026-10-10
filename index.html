@@ -1,0 +1,176 @@
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>DINOSAURIOS</title>
+    <style>
+        body {
+            background-color: rgb(69, 245, 63);
+            font-family: Arial, sans-serif;
+        }
+
+        .galeria-contenedor {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+  
+        .imagen-contenedor {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .casilla img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+         .casilla3 img {
+            width: 100%;
+            height: 250%;
+            object-fit: cover;
+            transition: filter 0.3s ease, transform 0.3s ease;
+         
+        }
+ 
+        .casilla:hover img {
+            filter:sepia(1) saturate(5) hue-rotate(-50deg);
+            
+        }
+        .descripcion-bloque {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            background-color: #2e9200;
+            color: #fff;
+        }
+
+        .nombre-dino {
+            color: rgb(134, 158, 0);
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+      
+        .detalles-dino {
+            font-size: 13px;
+            color: #ddd;
+            line-height: 1.3;
+            text-align: justify;
+        }
+
+        .leyenda {
+        font-style: italic;
+        text-align: center;
+        }
+
+        .paraZoom img:hover {
+        transform: scale(1.05);
+    }
+
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center; color: rgb(54, 63, 1);">DINOSAURIOS</h1>
+    
+
+
+    <h3 style="text-align: left; color: rgb(85, 100, 0); max-width: 1000px; margin: 0 auto 20px auto;">
+        Los dinosaurios fueron un grupo diverso de reptiles terrestres que dominaron la Tierra durante la Era Mesozoica, hace aproximadamente 245 a 66 millones de años.
+    </h3>
+
+    
+
+
+    <div class="cuadro-unico">
+        <div class="galeria-contenedor">
+            
+            <!-- DINOSAURIO 1 -->
+            <div class="casilla">
+                <div class="imagen-contenedor">
+                    <div class="paraZoom">
+                    <a href="enlace1.html">
+                    <img src="imagen1.jpg" alt="Dinosaurio 1"> 
+                    </a>
+                </div>
+                </div>
+                <a style="color: crimson;"  href="enlace1.html"></a>
+                <div class="descripcion-bloque">
+                    <div class="nombre-dino">Tiranosaurio Rex</div>
+                    <div class="datos-dino">
+                        <span><b>Peso:</b> 8 toneladas</span>
+                        <span><b>Tamaño:</b> 12 m</span>
+                    </div>
+                    <div class="detalles-dino">Gran depredador bípedo con una fuerza de mordida devastadora.</div>
+                </div>
+            </div>
+
+            <!-- DINOSAURIO 2 -->
+            <div class="casilla">
+                <div class="imagen-contenedor">
+                    <div class="paraZoom">
+                    <a href="enlace2.html"> 
+                    <img src="imagen2.jpg" alt="Dinosaurio 2">
+                    </a>
+                </div>
+                </div>
+                <a style="color: crimson;"  href="enlace2.html"></a>
+                <div class="descripcion-bloque">
+                    <div class="nombre-dino">Triceratops</div>
+                    <div class="datos-dino">
+                        <span><b>Peso:</b> 6 toneladas</span>
+                        <span><b>Tamaño:</b> 9 m</span>
+                    </div>
+                    <div class="detalles-dino">Herbívoro robusto con tres cuernos faciales y una gran gola ósea.</div>
+                </div>
+            </div>
+
+            <!-- DINOSAURIO 3 -->
+            <div class="casilla3">
+                <div class="casilla">
+                <div class="imagen-contenedor">
+                    <div class="paraZoom">
+                    <a href="enlace3.html">
+                    <img src="imagen3.jpg" alt="Dinosaurio 3">
+                    </a>
+                </div>
+                </div>
+                </div>
+
+
+                <a style="color: rgb(211, 226, 1);"  href="enlace3.html"></a>
+                <div class="descripcion-bloque">
+                    <div class="nombre-dino">Velociraptor</div>
+                    <div class="datos-dino">
+                        <span><b>Peso:</b> 15 kg</span>
+                        <span><b>Tamaño:</b> 2 m</span>
+                    </div>
+                    <div class="detalles-dino">Carnívoro ágil y rápido, destacado por su gran garra curva en el pie.</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

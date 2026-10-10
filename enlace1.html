@@ -1,0 +1,90 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+    body {
+        background-color: rgb(17, 202, 0);
+    }
+    h1 {
+        text-align: center;
+        color: rgb(42, 49, 1);
+    }
+    .contenedor-enlace {                
+        text-align: center;
+    }
+    .leyenda {
+        font-size: 20px;
+        font-style: italic;
+        color: rgb(0, 255, 21);
+    }
+    .contenedor {
+        background-color: yellowgreen;
+        border: 2px solid blue;
+    }
+    .contenedor h2 {
+        color: rgb(255, 0, 0);
+    }
+    .contenedor p{
+        color: darkgreen;
+    }
+    .contenedor h2:hover { 
+        color: rgb(157, 255, 0);
+    }
+    .contenedor-imagen {
+        text-align: center;
+        margin: 20px 0;
+    }
+   
+    .contenedor-imagen img {
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+    .contenedor-imagen img:hover {
+        transform: scale(1.05);
+    }
+    .colorimagen:hover h1 {
+        filter: sepia(1) saturate(5) hue-rotate(-80deg);
+    }
+</style>
+</head>
+<body>
+    <div class="colorimagen">
+        <h1>Tiranosaurio Rex</h1>
+    </div>
+    
+    <p class="leyenda-enlace">
+        <a style="color: rgb(255, 3, 3);" href="index.html">Volver</a>
+    </p>
+    
+    
+    <div class="contenedor-imagen">
+        <img id="dino-img" src="imagen01.jpg" alt="Tiranosaurio" width="400" title="">
+    </div>
+    
+    <div class="contenedor">
+        <h2>Tyrannosaurus Rex</h2>
+        <p>Tyrannosaurus rex es una especie y tipo del género extinto Tyrannosaurus de dinosaurio terópodo tiranosáurido, que vivió a finales del período Cretácico, hace aproximadamente entre 69 y 66 millones de años, en el Maastrichtiense, en lo que es hoy América del Norte.</p>
+    </div>
+
+  
+    <audio id="rugido" src="Rex.mp3"></audio>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
