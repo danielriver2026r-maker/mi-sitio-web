@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Loncheras</title>
+    <style>
+        /* Variables globales */
+        :root {
+            --bg-principal: #f4f5f4;
+            --color-texto-oscuro: #2b3303;
+            --color-primario: #2e9200;
+            --color-secundario: #869e00;
+            --color-tarjeta-bg: #ffffff;
+            --texto-blanco: #ffffff;
+            --texto-gris: #eeeeee;
+
+            /* 🛠️ AJUSTA AQUÍ EL TAMAÑO DE TU IMAGEN */
+            --imagen-ancho: 60%;    /* Puedes usar 100%, 300px, 250px, etc. */
+            --imagen-alto: 700px;    /* Puedes cambiarlo a 200px, 250px, 300px, etc. */
+        }
+
+        /* Estilos Generales */
+        body {
+            background-color: var(--bg-principal);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Barra de Navegación */
+        .navegacion {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto 30px auto;
+            padding: 10px 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .navegacion a {
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .navegacion a:hover {
+            opacity: 0.8;
+        }
+
+        .btn-volver {
+            color: #ff0303;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto 40px auto;
+        }
+
+        h1 {
+            color: var(--color-texto-oscuro);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+
+        .subtitulo {
+            color: var(--color-secundario);
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+
+        /* Contenedor del Catálogo (Grid Responsivo) */
+        .galeria-contenedor {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Tarjeta de Producto */
+        .tarjeta-producto {
+            background-color: var(--color-tarjeta-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .tarjeta-producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Contenedor de la Imagen controlado por tus variables */
+        .contenedor-imagenes {
+            width: var(--imagen-ancho);
+            height: var(--imagen-alto);
+            background-color: #000;
+            overflow: hidden;
+            margin: 0 auto; /* Centra el contenedor si le pones un ancho fijo menor a 100% */
+        }
+
+        .imagen-enlace {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .imagen-enlace img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cambia a 'contain' si prefieres que nunca se recorte */
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        /* EFECTO ROJIZO AL PASAR EL MOUSE (Tu efecto favorito intacto) */
+        .imagen-enlace:hover img {
+            transform: scale(1.08);
+            filter: sepia(1) saturate(6) hue-rotate(-50deg);
+        }
+
+        /* Bloque de Información */
+        .descripcion-bloque {
+            padding: 20px;
+            background-color: var(--color-primario);
+            color: var(--texto-blanco);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .detalles-producto {
+            font-size: 0.95rem;
+            color: var(--texto-gris);
+            line-height: 1.5;
+            text-align: justify;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú de navegación limpio -->
+    <nav class="navegacion">
+        <a href="index.html" class="btn-volver">Volver al inicio</a>
+    </nav>
+
+    <header>
+        <h1>Loncheras</h1>
+        <p class="subtitulo">Conserva tus alimentos frescos con el mejor estilo</p>
+    </header>
+
+    <main class="galeria-contenedor">
+        
+        <!-- Modelo 1 -->
+        <article class="tarjeta-producto">
+            <div class="contenedor-imagenes">
+                <div class="imagen-enlace">
+                    <img src="WhatsApp Image 2026-10-14 at 7.09.34 PM (5).jpeg" alt="Lonchera Térmica">
+                </div>
+            </div>
+            <div class="descripcion-bloque">
+                <p class="detalles-producto">
+                    Lonchera térmica ideal para llevar tus comidas al trabajo o la escuela. Diseñada con materiales de alta resistencia, aislamiento térmico de calidad y fácil limpieza para el uso diario.
+                </p>
+            </div>
+        </article>
+    
+    </main>
+
+</body>
+</html>

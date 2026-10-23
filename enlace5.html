@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Canguros y Pierneros</title>
+    <style>
+        /* Variables globales */
+        :root {
+            --bg-principal: #f4f5f4;
+            --color-texto-oscuro: #2b3303;
+            --color-primario: #2e9200;
+            --color-secundario: #869e00;
+            --color-tarjeta-bg: #ffffff;
+            --texto-blanco: #ffffff;
+            --texto-gris: #eeeeee;
+        }
+
+        /* Estilos Generales */
+        body {
+            background-color: var(--bg-principal);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Barra de Navegación */
+        .navegacion {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto 30px auto;
+            padding: 10px 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .navegacion a {
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .navegacion a:hover {
+            opacity: 0.8;
+        }
+
+        .btn-volver {
+            color: #ff0303;
+        }
+
+        /* Encabezado */
+        header {
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto 40px auto;
+        }
+
+        h1 {
+            color: var(--color-texto-oscuro);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            color: var(--color-secundario);
+            font-size: 1.1rem;
+            font-weight: normal;
+        }
+
+        /* Contenedor del Catálogo (Grid Responsivo) */
+        .galeria-contenedor {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Tarjeta de Producto */
+        .tarjeta-producto {
+            background-color: var(--color-tarjeta-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tarjeta-producto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Contenedor triple adaptado para albergar tres imágenes de forma ordenada */
+        .contenedor-imagenes-triple {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* Divide el espacio exactamente en 3 columnas iguales */
+            height: 220px;
+            background-color: #000;
+            gap: 2px; /* Línea divisoria muy fina entre las fotos */
+        }
+
+        .imagen-enlace {
+            display: block;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .imagen-enlace img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        /* EFECTO ROJIZO AL PASAR EL MOUSE (Tu efecto favorito) */
+        .imagen-enlace:hover img {
+            transform: scale(1.08);
+            filter: sepia(1) saturate(6) hue-rotate(-50deg);
+        }
+
+        /* Bloque de Información */
+        .descripcion-bloque {
+            padding: 20px;
+            background-color: var(--color-primario);
+            color: var(--texto-blanco);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .detalles-producto {
+            font-size: 0.95rem;
+            color: var(--texto-gris);
+            line-height: 1.5;
+            text-align: justify;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menú de navegación limpio -->
+    <nav class="navegacion">
+        <a href="index.html" class="btn-volver">Volver al inicio</a>
+    </nav>
+
+    <header>
+        <h1>Línea de Canguros</h1>
+        <p class="subtitulo">Comodidad, resistencia y estilo para el día a día</p>
+    </header>
+
+    <main class="galeria-contenedor">
+        
+        <!-- Modelo 1 (Con tres vistas del producto) -->
+        <article class="tarjeta-producto">
+            
+            <!-- Contenedor ordenado para tres imágenes -->
+            <div class="contenedor-imagenes-triple">
+                <div class="imagen-enlace">
+                    <img src="WhatsApp Image 2026-10-14 at 7.09.34 PM (3).jpeg" alt="Canguro Deportivo - Vista 1">
+                </div>
+                <div class="imagen-enlace">
+                    <img src="WhatsApp Image 2026-10-14 at 7.09.34 PM (4).jpeg" alt="Canguro Deportivo - Vista 2">
+                </div>
+                <div class="imagen-enlace">
+                    <img src="WhatsApp Image 2026-10-14 at 7.09.37 PM (2).jpeg" alt="Canguro Deportivo - Vista 3">
+                </div>
+            </div>
+            
+            <div class="descripcion-bloque">
+                <p class="detalles-producto">
+                    Canguro ideal para actividades al aire libre o deportes. Cuenta con múltiples compartimentos reforzados y un ajuste perfecto a la cintura para mayor comodidad en movimiento.
+                </p>
+            </div>
+        </article>
+    
+    </main>
+
+</body>
+</html>
