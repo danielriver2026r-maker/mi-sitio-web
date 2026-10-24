@@ -7,7 +7,7 @@
     <!-- 🔤 FUENTES PROFESIONALES (Google Fonts) -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -18,11 +18,11 @@
 
     <!-- 📱 MENÚ DE CATEGORÍAS (Filtros) -->
     <nav class="menu-categorias">
-        <button class="btn-categoria activo" onclick="filtrarCategoria('todos')">Ver Todo</button>
-        <button class="btn-categoria" onclick="filtrarCategoria('militar')">Mochilas Tácticas</button>
-        <button class="btn-categoria" onclick="filtrarCategoria('escolar')">Uso Diario</button>
-        <button class="btn-categoria" onclick="filtrarCategoria('canguros')">Canguros</button>
-        <button class="btn-categoria" onclick="filtrarCategoria('loncheras')">Loncheras</button>
+        <button class="btn-categoria activo" onclick="filtrarCategoria('todos', event)">Ver Todo</button>
+        <button class="btn-categoria" onclick="filtrarCategoria('militar', event)">Mochilas Tácticas</button>
+        <button class="btn-categoria" onclick="filtrarCategoria('escolar', event)">Uso Diario</button>
+        <button class="btn-categoria" onclick="filtrarCategoria('canguros', event)">Canguros</button>
+        <button class="btn-categoria" onclick="filtrarCategoria('loncheras', event)">Loncheras</button>
     </nav>
 
     <!-- Barra de Búsqueda -->
@@ -43,7 +43,7 @@
                 <div class="datos-producto">
                     <span class="precio-etiqueta">$ 60.000</span>
                     <span><b>Tamaño:</b> Estándar</span>
-                     <span><b>Capacidad:</b> 46 L</span>
+                    <span><b>Capacidad:</b> 46 L</span>
                 </div>
                 <p class="detalles-producto">Mochila tipo militar de alta resistencia, algunas variantes incluyen bandas reflectivas.</p>
                 <button class="btn-comprar" onclick="abrirCheckOut('Mochilas Tipo Militar', '$ 60.000')">Comprar ahora</button>
@@ -60,7 +60,7 @@
                 <div class="datos-producto">
                     <span class="precio-etiqueta">$ 45.000</span>
                     <span><b>Tamaño:</b> Pequeña</span>
-                 <span><b>Capacidad:</b> 20 L</span>
+                    <span><b>Capacidad:</b> 20 L</span>
                 </div>
                 <p class="detalles-producto">Mochilas pequeñas ideales para el uso diario, cómodas y ligeras.</p>
                 <button class="btn-comprar" onclick="abrirCheckOut('Mochila Pequeña', '$ 45.000')">Comprar ahora</button>
@@ -124,6 +124,7 @@
             <span class="cerrar-modal" onclick="cerrarCheckOut()">&times;</span>
             <h3 style="margin-bottom: 5px;">Datos de Entrega</h3>
             <p id="resumenProducto" style="font-size: 0.9rem; color: var(--texto-gris); margin-top: 0; margin-bottom: 20px;"></p>
+            
             <form id="formularioPedido" onsubmit="enviarPedidoWhatsApp(event)">
                 <div class="grupo-input">
                     <label for="nombreCliente">Nombre Completo</label>
@@ -143,7 +144,8 @@
             </form>
         </div>
     </div>
-    <style>
+
+        <style>
         /* 🎨 VARIABLES GLOBALES Y COLORES */
         :root {
             --bg-principal: #f8f9fa;
@@ -153,7 +155,7 @@
             --color-tarjeta-bg: #ffffff;
             --texto-blanco: #002f5a;
             --texto-gris: #5a626a;
-            --color-exito: #25d366; /* Verde WhatsApp */
+            --color-exito: #25d366;
             --fuente-titulos: 'Space Grotesk', sans-serif;
             --fuente-cuerpo: 'Plus Jakarta Sans', sans-serif;
         }
@@ -452,30 +454,39 @@
             border-top: 1px solid #eef0f2;
         }
     </style>
+
+     <footer class="pie-pagina">
+        <p>&copy; 2026 Daniel Rivera. Todos los derechos reservados.</p>
+        <p><a href="#" style="color:#0e0c02;" onclick="event.preventDefault(); alert('TÉRMINOS Y CONDICIONES\n\n1. Compras: Catálogo virtual. Pedidos se acuerdan por WhatsApp.\n2. Envíos/Cambios: Costos y garantías se coordinan en el chat.\n3. Datos: Información privada para envíos.')">Términos y Condiciones</a></p>
+    </footer>
+
     <script>
         // 🛠️ CONFIGURACIÓN DE NÚMERO
         const MI_WHATSAPP = "573151695019";
-
+        
         // Variables temporales para el producto seleccionado
         let productoSeleccionado = "";
         let precioSeleccionado = "";
 
-        // 📱 FUNCIÓN PARA FILTRAR CATEGORÍAS DESDE EL MENÚ
-        function filtrarCategoria(categoria) {
-            // Actualizar estado visual de los botones del menú
+        // 📱 FUNCIÓN PARA FILTRAR CATEGORÍAS DESDE EL MENÚ (¡CORREGIDA!)
+        function filtrarCategoria(categoria, event) {
+            // 1. Cambiar el estado visual de los botones del menú
             const botones = document.querySelectorAll('.btn-categoria');
             botones.forEach(btn => btn.classList.remove('activo'));
             
-            // Buscar el botón presionado para activarlo
-            event.currentTarget.classList.add('activo');
+            if(event && event.currentTarget) {
+                event.currentTarget.classList.add('activo');
+            }
 
-            // Mostrar u ocultar las tarjetas de productos
+            // 2. Ocultar o mostrar los productos físicamente en la pantalla
             const productos = document.querySelectorAll('.tarjeta-producto');
             productos.forEach(producto => {
-                if (categoria === 'todos' || producto.getAttribute('data-categoria') === categoria) {
-                    producto.style.display = 'flex';
+                const categoriaProducto = producto.getAttribute('data-categoria');
+                
+                if (categoria === 'todos' || categoriaProducto === categoria) {
+                    producto.style.setProperty('display', 'flex', 'important');
                 } else {
-                    producto.style.display = 'none';
+                    producto.style.setProperty('display', 'none', 'important');
                 }
             });
         }
@@ -493,7 +504,6 @@
             document.getElementById('formularioPedido').reset();
         }
 
-        // Cierra el modal si se hace clic fuera del recuadro blanco
         window.onclick = function(event) {
             const modal = document.getElementById('modalCompra');
             if (event.target == modal) {
@@ -520,12 +530,12 @@
             }
 
             const textoMensaje = `¡Hola Daniel! Me interesa realizar una compra:\n\n` +
-                                 `🛍️ *Producto:* ${productoSeleccionado}\n` +
-                                 `💰 *Precio:* ${precioSeleccionado}\n\n` +
-                                 `👤 *Datos de Entrega:*\n` +
-                                 `• *Nombre:* ${nombre}\n` +
-                                 `• *Teléfono:* ${telefono}\n` +
-                                 `• *Dirección:* ${direccion}`;
+                                `🛍️ *Producto:* ${productoSeleccionado}\n` +
+                                `💰 *Precio:* ${precioSeleccionado}\n\n` +
+                                `👤 *Datos de Entrega:*\n` +
+                                `• *Nombre:* ${nombre}\n` +
+                                `• *Teléfono:* ${telefono}\n` +
+                                `• *Dirección:* ${direccion}`;
 
             const urlWhatsApp = `https://whatsapp.com{MI_WHATSAPP}&text=${encodeURIComponent(textoMensaje)}`;
             window.open(urlWhatsApp, '_blank');
@@ -551,7 +561,9 @@
             const consulta = document.getElementById('inputBusqueda').value.trim().toLowerCase();
             if (!consulta) return;
 
-            const productoEncontrado = baseDeDatosProductos.find(prod => prod.palabras.some(palabra => consulta.includes(palabra)) );
+            const productoEncontrado = baseDeDatosProductos.find(prod => 
+                prod.palabras.some(palabra => consulta.includes(palabra))
+            );
 
             if (productoEncontrado) {
                 window.location.href = productoEncontrado.url;
@@ -565,41 +577,5 @@
             }
         }
     </script>
-
-    <footer class="pie-pagina">
-        <p>&copy; 2026 Daniel Rivera. Todos los derechos reservados.</p>
-    </footer>
-
-
-<!-- 👣 PIE DE PÁGINA (Footer corto) -->
-<footer>
-  
-    <p><a href="#" style="color:#0e0c02;" onclick="event.preventDefault(); alert('TÉRMINOS Y CONDICIONES\n\n1. Compras: Catálogo virtual. Pedidos se acuerdan por WhatsApp.\n2. Envíos/Cambios: Costos y garantías se coordinan en el chat.\n3. Datos: Información privada para envíos.')">Términos y Condiciones</a></p>
-</footer>
-
-<!-- 🕹️ LÓGICA JAVASCRIPT COMPLETAMENTE INTEGRADA -->
-<script>
-    function abrirCheckOut(producto, precio) {
-        document.getElementById('resumenProducto').innerText = "Estás comprando: " + producto + " (" + precio + ")";
-        document.getElementById('modalCompra').style.display = 'flex';
-    }
-    function cerrarCheckOut() { document.getElementById('modalCompra').style.display = 'none'; }
-    
-    window.onclick = function(e) {
-        if (e.target.className === 'modal-compra') cerrarCheckOut();
-    }
-
-    function enviarPedidoWhatsApp(event) {
-        event.preventDefault();
-        alert("Redireccionando a WhatsApp...");
-        cerrarCheckOut();
-    }
-    function filtrarCategoria(cat) { console.log("Filtrando: " + cat); }
-    function ejecutarBusqueda() { console.log("Buscando..."); }
-    function evaluarEnter(e) { if(e.key === 'Enter') ejecutarBusqueda(); }
-</script>
-
-
-
 </body>
 </html>
