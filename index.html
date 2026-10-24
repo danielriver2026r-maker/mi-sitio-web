@@ -1,62 +1,229 @@
 <!DOCTYPE html>
 <html lang="es">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Mochilas</title>
+    <!-- 🔤 FUENTES PROFESIONALES (Google Fonts) -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <h1>Catálogo de Mochilas</h1>
+        <p class="subtitulo">Todo tipo de mochilas para todo tipo de uso</p>
+    </header>
+
+    <!-- 📱 MENÚ DE CATEGORÍAS (Filtros) -->
+    <nav class="menu-categorias">
+        <button class="btn-categoria activo" onclick="filtrarCategoria('todos')">Ver Todo</button>
+        <button class="btn-categoria" onclick="filtrarCategoria('militar')">Mochilas Tácticas</button>
+        <button class="btn-categoria" onclick="filtrarCategoria('escolar')">Uso Diario</button>
+        <button class="btn-categoria" onclick="filtrarCategoria('canguros')">Canguros</button>
+        <button class="btn-categoria" onclick="filtrarCategoria('loncheras')">Loncheras</button>
+    </nav>
+
+    <!-- Barra de Búsqueda -->
+    <div class="buscador-contenedor">
+        <input type="text" id="inputBusqueda" class="barra-busqueda" placeholder="Buscar mochila, militar, canguro, lonchera..." onkeypress="evaluarEnter(event)">
+        <button class="btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
+    </div>
+
+    <!-- Catálogo de Productos -->
+    <main class="galeria-contenedor" id="galeriaProductos">
+        <!-- Producto 1 -->
+        <article class="tarjeta-producto" data-categoria="militar">
+            <a href="enlace1.html" class="imagen-enlace">
+                <img src="WhatsApp Image 2026-10-14 at 7.10.03 PM (5).jpeg" alt="Mochila tipo militar">
+            </a>
+            <div class="descripcion-bloque">
+                <h2 class="nombre-producto">Mochila Tipo Militar</h2>
+                <div class="datos-producto">
+                    <span class="precio-etiqueta">$ 60.000</span>
+                    <span><b>Tamaño:</b> Estándar</span>
+                     <span><b>Capacidad:</b> 46 L</span>
+                </div>
+                <p class="detalles-producto">Mochila tipo militar de alta resistencia, algunas variantes incluyen bandas reflectivas.</p>
+                <button class="btn-comprar" onclick="abrirCheckOut('Mochilas Tipo Militar', '$ 60.000')">Comprar ahora</button>
+            </div>
+        </article>
+
+        <!-- Producto 2 -->
+        <article class="tarjeta-producto" data-categoria="escolar">
+            <a href="enlace2.html" class="imagen-enlace">
+                <img src="WhatsApp Image 2026-10-14 at 7.09.35 PM (5).jpeg" alt="Mochila pequeña">
+            </a>
+            <div class="descripcion-bloque">
+                <h2 class="nombre-producto">Mochila Pequeña</h2>
+                <div class="datos-producto">
+                    <span class="precio-etiqueta">$ 45.000</span>
+                    <span><b>Tamaño:</b> Pequeña</span>
+                 <span><b>Capacidad:</b> 20 L</span>
+                </div>
+                <p class="detalles-producto">Mochilas pequeñas ideales para el uso diario, cómodas y ligeras.</p>
+                <button class="btn-comprar" onclick="abrirCheckOut('Mochila Pequeña', '$ 45.000')">Comprar ahora</button>
+            </div>
+        </article>
+
+        <!-- Producto 3 -->
+        <article class="tarjeta-producto" data-categoria="escolar">
+            <a href="enlace3.html" class="imagen-enlace">
+                <img src="WhatsApp Image 2026-10-14 at 7.10.00 PM (4).jpeg" alt="Mochila mediana">
+            </a>
+            <div class="descripcion-bloque">
+                <h2 class="nombre-producto">Mochila Mediana</h2>
+                <div class="datos-producto">
+                    <span class="precio-etiqueta">$ 48.000</span>
+                    <span><b>Tamaño:</b> Mediana</span>
+                    <span><b>Capacidad:</b> 40 L</span>
+                </div>
+                <p class="detalles-producto">Mochilas medianas de tamaño estándar, perfectas para estudiantes o trabajo.</p>
+                <button class="btn-comprar" onclick="abrirCheckOut('Mochilas Medianas', '$ 48.000')">Comprar ahora</button>
+            </div>
+        </article>
+
+        <!-- Producto 4 -->
+        <article class="tarjeta-producto" data-categoria="canguros">
+            <a href="enlace5.html" class="imagen-enlace">
+                <img src="WhatsApp Image 2026-10-14 at 7.09.34 PM (3).jpeg" alt="Canguros y pierneros">
+            </a>
+            <div class="descripcion-bloque">
+                <h2 class="nombre-producto">Canguro</h2>
+                <div class="datos-producto">
+                    <span class="precio-etiqueta">$ 35.000</span>
+                    <span><b>Estilo:</b> Urbano</span>
+                    <span><b>color:</b> negro</span>
+                </div>
+                <p class="detalles-producto">Canguros y pierneros cómodos, perfectos para llevar tus pertenencias con seguridad.</p>
+                <button class="btn-comprar" onclick="abrirCheckOut('Canguros', '$ 35.000')">Comprar ahora</button>
+            </div>
+        </article>
+
+        <!-- Producto 5 -->
+        <article class="tarjeta-producto" data-categoria="loncheras">
+            <a href="enlace6.html" class="imagen-enlace">
+                <img src="WhatsApp Image 2026-10-14 at 7.09.34 PM (5).jpeg" alt="Loncheras">
+            </a>
+            <div class="descripcion-bloque">
+                <h2 class="nombre-producto">Loncheras</h2>
+                <div class="datos-producto">
+                    <span class="precio-etiqueta">$ 28.000</span>
+                    <span><b>Tipo:</b> Térmica</span>
+                </div>
+                <p class="detalles-producto">Loncheras ideales para conservar y llevar tus comidas frescas al trabajo o escuela.</p>
+                <button class="btn-comprar" onclick="abrirCheckOut('Loncheras', '$ 28.000')">Comprar ahora</button>
+            </div>
+        </article>
+    </main>
+
+    <!-- Ventana Emergente (Formulario de Datos) -->
+    <div id="modalCompra" class="modal-compra">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" onclick="cerrarCheckOut()">&times;</span>
+            <h3 style="margin-bottom: 5px;">Datos de Entrega</h3>
+            <p id="resumenProducto" style="font-size: 0.9rem; color: var(--texto-gris); margin-top: 0; margin-bottom: 20px;"></p>
+            <form id="formularioPedido" onsubmit="enviarPedidoWhatsApp(event)">
+                <div class="grupo-input">
+                    <label for="nombreCliente">Nombre Completo</label>
+                    <input type="text" id="nombreCliente" required placeholder="Ej. Mahilo rivera">
+                </div>
+                <div class="grupo-input">
+                    <label for="telefonoCliente">Teléfono de Contacto</label>
+                    <input type="tel" id="telefonoCliente" required placeholder="Ej. 3151234567">
+                </div>
+                <div class="grupo-input">
+                    <label for="direccionCliente">Dirección de Envío</label>
+                    <input type="text" id="direccionCliente" required placeholder="Ej. Calle 10 #24-45, Barrio Centro">
+                </div>
+                <button type="submit" class="btn-enviar-pedido">
+                    Concluir Pedido por WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
     <style>
-
-/* Estilos del Pie de Página (Derechos de autor) */
-.pie-pagina {
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 50px;
-    color: var(--color-texto-oscuro);
-    font-size: 0.9rem;
-    border-top: 1px solid rgba(134, 158, 0, 0.2);
-}
-
-
-        /* Variables globales */
+        /* 🎨 VARIABLES GLOBALES Y COLORES */
         :root {
-            --bg-principal: #f4f5f4;
-            --color-texto-oscuro: #2b3303;
-            --color-primario: #2e9200;
-            --color-secundario: #869e00;
+            --bg-principal: #f8f9fa;
+            --color-texto-oscuro: #1a1d20;
+            --color-primario: #ffe600;
+            --color-secundario: #030300;
             --color-tarjeta-bg: #ffffff;
-            --texto-blanco: #ffffff;
-            --texto-gris: #eeeeee;
+            --texto-blanco: #002f5a;
+            --texto-gris: #5a626a;
+            --color-exito: #25d366; /* Verde WhatsApp */
+            --fuente-titulos: 'Space Grotesk', sans-serif;
+            --fuente-cuerpo: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* Estilos Generales */
+        /* 🎛️ ESTILOS GENERALES */
         body {
             background-color: var(--bg-principal);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--fuente-cuerpo);
             margin: 0;
             padding: 20px;
-            color: #333;
+            color: var(--color-texto-oscuro);
         }
 
         header {
             text-align: center;
             max-width: 1200px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 20px auto;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--fuente-titulos);
+            color: var(--color-texto-oscuro);
+            margin: 0 0 10px 0;
         }
 
         h1 {
-            color: var(--color-texto-oscuro);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
         }
 
         .subtitulo {
-            color: var(--color-secundario);
+            color: var(--texto-gris);
             font-size: 1.1rem;
             font-weight: normal;
         }
 
-        /* Sección de la Barra de Búsqueda */
+        /* 📱 MENÚ DE CATEGORÍAS */
+        .menu-categorias {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto 25px auto;
+        }
+
+        .btn-categoria {
+            background-color: transparent;
+            color: var(--color-texto-oscuro);
+            border: 2px solid #e0e0e0;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--fuente-cuerpo);
+            transition: all 0.3s ease;
+        }
+
+        .btn-categoria:hover {
+            border-color: var(--color-secundario);
+            background-color: rgba(3, 3, 0, 0.05);
+        }
+
+        .btn-categoria.activo {
+            background-color: var(--color-secundario);
+            color: white;
+            border-color: var(--color-secundario);
+        }
+
+        /* 🔍 BARRA DE BÚSQUEDA */
         .buscador-contenedor {
             max-width: 500px;
             margin: 0 auto 40px auto;
@@ -67,19 +234,20 @@
         .barra-busqueda {
             flex-grow: 1;
             padding: 12px 20px;
-            border: 2px solid var(--color-secundario);
+            border: 2px solid #e0e0e0;
             border-radius: 25px;
             font-size: 1rem;
             outline: none;
+            font-family: var(--fuente-cuerpo);
             transition: border-color 0.3s ease;
         }
 
         .barra-busqueda:focus {
-            border-color: var(--color-primario);
+            border-color: var(--color-secundario);
         }
 
         .btn-buscar {
-            background-color: var(--color-primario);
+            background-color: var(--color-secundario);
             color: white;
             border: none;
             padding: 0 25px;
@@ -87,14 +255,15 @@
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            font-family: var(--fuente-cuerpo);
+            transition: opacity 0.2s ease;
         }
 
         .btn-buscar:hover {
-            background-color: #236d00;
+            opacity: 0.9;
         }
 
-        /* Contenedor del Catálogo (Grid Responsivo) */
+        /* 🛍️ CONTENEDOR DEL CATÁLOGO */
         .galeria-contenedor {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -103,49 +272,45 @@
             margin: 0 auto;
         }
 
-        /* Tarjeta de Producto */
+        /* 🏷️ TARJETA DE PRODUCTO */
         .tarjeta-producto {
             background-color: var(--color-tarjeta-bg);
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
+            border: 1px solid #eef0f2;
         }
 
         .tarjeta-producto:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
         }
 
-        /* Contenedor de la Imagen */
         .imagen-enlace {
             display: block;
-            height: 220px;
+            height: 240px;
             overflow: hidden;
             position: relative;
-            background-color: #000;
+            background-color: #f0f0f0;
         }
 
         .imagen-enlace img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s ease, filter 0.4s ease;
+            transition: transform 0.4s ease;
         }
 
-        /* EFECTO ROJIZO AL PASAR EL MOUSE */
-        .imagen-enlace:hover img {
-            transform: scale(1.08);
-            filter: sepia(1) saturate(6) hue-rotate(-50deg);
+        .tarjeta-producto:hover .imagen-enlace img {
+            transform: scale(1.05);
         }
 
-        /* Bloque de Información */
+        /* 📝 BLOQUE DE INFORMACIÓN */
         .descripcion-bloque {
             padding: 20px;
-            background-color: var(--color-primario);
-            color: var(--texto-blanco);
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -153,140 +318,227 @@
         }
 
         .nombre-producto {
-            color: var(--texto-blanco);
-            text-align: center;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 0;
+            color: var(--color-texto-oscuro);
+            font-size: 1.25rem;
+            font-weight: 700;
         }
 
         .datos-producto {
             display: flex;
             justify-content: space-between;
-            font-size: 0.85rem;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.9rem;
+            color: var(--texto-gris);
+            border-bottom: 1px solid #f0f0f0;
             padding-bottom: 10px;
         }
 
-        .datos-producto span {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
+        .precio-etiqueta {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--color-texto-oscuro);
         }
 
         .detalles-producto {
             font-size: 0.9rem;
             color: var(--texto-gris);
-            line-height: 1.4;
-            text-align: left;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* 🛒 BOTÓN DE COMPRA */
+        .btn-comprar {
+            background-color: var(--color-primario);
+            color: var(--texto-blanco);
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: auto;
+            font-family: var(--fuente-cuerpo);
+            transition: background-color 0.2s;
+            text-align: center;
+        }
+
+        .btn-comprar:hover {
+            background-color: #ffd600;
+        }
+
+        /* 📋 FORMULARIO MODAL DE DATOS */
+        .modal-compra {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .modal-contenido {
+            background-color: white;
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .cerrar-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--texto-gris);
+        }
+
+        .grupo-input {
+            margin-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .grupo-input label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-texto-oscuro);
+        }
+
+        .grupo-input input {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: var(--fuente-cuerpo);
+            font-size: 1rem;
+        }
+
+        .btn-enviar-pedido {
+            background-color: var(--color-exito);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: var(--fuente-cuerpo);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-enviar-pedido:hover {
+            background-color: #20ba56;
+        }
+
+        /* 👣 PIE DE PÁGINA */
+        .pie-pagina {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            color: var(--texto-gris);
+            font-size: 0.9rem;
+            border-top: 1px solid #eef0f2;
         }
     </style>
-</head>
-<body>
-
-    <header>
-        <h1>Catálogo de Mochilas</h1>
-        <p class="subtitulo">Todo tipo de mochilas para todo tipo de uso</p>
-    </header>
-
-    <!-- Barra de Búsqueda -->
-    <div class="buscador-contenedor">
-        <input type="text" id="inputBusqueda" class="barra-busqueda" placeholder="Buscar mochila, militar, canguro, lonchera..." onkeypress="evaluarEnter(event)">
-        <button class="btn-buscar" onclick="ejecutarBusqueda()">Buscar</button>
-    </div>
-
-    <main class="galeria-contenedor">
-        
-        <!-- Producto 1 -->
-        <article class="tarjeta-producto">
-            <a href="enlace1.html" class="imagen-enlace">
-                <img src="WhatsApp Image 2026-10-14 at 7.10.03 PM (5).jpeg" alt="Mochila tipo militar">
-            </a>
-            <div class="descripcion-bloque">
-                <h2 class="nombre-producto">Mochilas Tipo Militar</h2>
-                <div class="datos-producto">
-                    <span><b>Precio:</b> Consultar</span>
-                    <span><b>Tamaño:</b> Estándar</span>
-                </div>
-                <p class="detalles-producto">Mochilas tipo militar de alta resistencia, algunas variantes incluyen bandas reflectivas.</p>
-            </div>
-        </article>
-
-        <!-- Producto 2 -->
-        <article class="tarjeta-producto">
-            <a href="enlace2.html" class="imagen-enlace">
-                <img src="WhatsApp Image 2026-10-14 at 7.09.35 PM (5).jpeg" alt="Mochila pequeña">
-            </a>
-            <div class="descripcion-bloque">
-                <h2 class="nombre-producto">Mochila Pequeña</h2>
-                <div class="datos-producto">
-                    <span><b>Variedad:</b> Colores</span>
-                    <span><b>Tamaño:</b> Pequeña</span>
-                </div>
-                <p class="detalles-producto">Mochilas pequeñas ideales para el uso diario, cómodas y ligeras.</p>
-            </div>
-        </article>
-
-        <!-- Producto 3 -->
-        <article class="tarjeta-producto">
-            <a href="enlace3.html" class="imagen-enlace">
-                <img src="WhatsApp Image 2026-10-14 at 7.10.00 PM (4).jpeg" alt="Mochila mediana">
-            </a>
-            <div class="descripcion-bloque">
-                <h2 class="nombre-producto">Mochilas Medianas</h2>
-                <div class="datos-producto">
-                    <span><b>Capacidad:</b> 15 kg</span>
-                    <span><b>Tamaño:</b> Estándar</span>
-                </div>
-                <p class="detalles-producto">Mochilas medianas de tamaño estándar, perfectas para estudiantes o trabajo.</p>
-            </div>
-        </article>
-
-        <!-- Producto 4 -->
-        <article class="tarjeta-producto">
-            <a href="enlace5.html" class="imagen-enlace">
-                <img src="WhatsApp Image 2026-10-14 at 7.10.00 PM (3).jpeg" alt="Canguros y pierneros">
-            </a>
-            <div class="descripcion-bloque">
-                <h2 class="nombre-producto">Canguros</h2>
-                <div class="datos-producto">
-                    <span><b>Estilo:</b> Urbano</span>
-                    <span><b>Tamaño:</b> Ajustable</span>
-                </div>
-                <p class="detalles-producto">Canguros y pierneros cómodos, perfectos para llevar tus pertenencias con seguridad en el día a día.</p>
-            </div>
-        </article>
-        
-        <!-- Producto 5 -->
-        <article class="tarjeta-producto">
-            <a href="enlace6.html" class="imagen-enlace">
-                <img src="loncheras.png" alt="Loncheras">
-            </a>
-            <div class="descripcion-bloque">
-                <h2 class="nombre-producto">Loncheras</h2>
-                <div class="datos-producto">
-                    <span><b>Tipo:</b> Térmica</span>
-                    <span><b>Tamaño:</b> Estándar</span>
-                </div>
-                <p class="detalles-producto">Loncheras ideales para conservar y llevar tus comidas frescas al trabajo o a la escuela.</p>
-            </div>
-        </article>
-           
-    </main>
-
-        <script>
-        // 🛠️ CONFIGURACIÓN: Ingresa tu número de WhatsApp aquí (con código de país, sin espacios ni el signo +)
+    <script>
+        // 🛠️ CONFIGURACIÓN DE NÚMERO
         const MI_WHATSAPP = "573151695019";
 
-        // Mapeo de palabras clave directamente a tus páginas web creadas
+        // Variables temporales para el producto seleccionado
+        let productoSeleccionado = "";
+        let precioSeleccionado = "";
+
+        // 📱 FUNCIÓN PARA FILTRAR CATEGORÍAS DESDE EL MENÚ
+        function filtrarCategoria(categoria) {
+            // Actualizar estado visual de los botones del menú
+            const botones = document.querySelectorAll('.btn-categoria');
+            botones.forEach(btn => btn.classList.remove('activo'));
+            
+            // Buscar el botón presionado para activarlo
+            event.currentTarget.classList.add('activo');
+
+            // Mostrar u ocultar las tarjetas de productos
+            const productos = document.querySelectorAll('.tarjeta-producto');
+            productos.forEach(producto => {
+                if (categoria === 'todos' || producto.getAttribute('data-categoria') === categoria) {
+                    producto.style.display = 'flex';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+
+        // Funciones del Modal de Compra
+        function abrirCheckOut(producto, precio) {
+            productoSeleccionado = producto;
+            precioSeleccionado = precio;
+            document.getElementById('resumenProducto').innerText = `Estás comprando: ${producto} (${precio})`;
+            document.getElementById('modalCompra').style.display = 'flex';
+        }
+
+        function cerrarCheckOut() {
+            document.getElementById('modalCompra').style.display = 'none';
+            document.getElementById('formularioPedido').reset();
+        }
+
+        // Cierra el modal si se hace clic fuera del recuadro blanco
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalCompra');
+            if (event.target == modal) {
+                cerrarCheckOut();
+            }
+        }
+
+        // PROCESAR Y ENVIAR EL PEDIDO A WHATSAPP
+        function enviarPedidoWhatsApp(event) {
+            event.preventDefault();
+            const nombre = document.getElementById('nombreCliente').value.trim();
+            const telefono = document.getElementById('telefonoCliente').value.trim();
+            const direccion = document.getElementById('direccionCliente').value.trim();
+
+            const regexTelefono = /^[0-9]{10}$/;
+            if (!regexTelefono.test(telefono)) {
+                alert("❌ Por favor, ingresa un número de celular válido de 10 dígitos (ej: 3151234567).");
+                return;
+            }
+
+            if (direccion.length < 10) {
+                alert("❌ Por favor, escribe tu dirección de entrega completa (Incluye calle, número y barrio).");
+                return;
+            }
+
+            const textoMensaje = `¡Hola Daniel! Me interesa realizar una compra:\n\n` +
+                                 `🛍️ *Producto:* ${productoSeleccionado}\n` +
+                                 `💰 *Precio:* ${precioSeleccionado}\n\n` +
+                                 `👤 *Datos de Entrega:*\n` +
+                                 `• *Nombre:* ${nombre}\n` +
+                                 `• *Teléfono:* ${telefono}\n` +
+                                 `• *Dirección:* ${direccion}`;
+
+            const urlWhatsApp = `https://whatsapp.com{MI_WHATSAPP}&text=${encodeURIComponent(textoMensaje)}`;
+            window.open(urlWhatsApp, '_blank');
+            cerrarCheckOut();
+        }
+
+        // BÚSQUEDA Y PALABRAS CLAVE
         const baseDeDatosProductos = [
-            { palabras: ["militar", "tactica", "táctica", "ejercito", "militares"], url: "enlace1.html" },
+            { palabras: ["militar", "tactica", "táctica", "ejercito", "militares","refletivo"], url: "enlace1.html" },
             { palabras: ["pequena", "pequeña", "escolar", "ligera", "chica"], url: "enlace2.html" },
             { palabras: ["mediana", "medianas", "estudiante", "trabajo"], url: "enlace3.html" },
-            { palabras: ["canguro", "canguros", "piernero", "pierneros", "riñonera"], url: "enlace5.html" },
-            { palabras: ["lonchera", "loncheras", "termica", "térmica", "comida"], url: "enlace6.html" }
+            { palabras: ["canguro", "canguros", "piernero", "pierneros", "riñonera","canguro negro","canguro militar"], url: "enlace5.html" },
+            { palabras: ["lonchera", "loncheras", "termica", "térmica", "comida","porta"], url: "enlace6.html" }
         ];
 
         function evaluarEnter(event) {
@@ -299,16 +551,11 @@
             const consulta = document.getElementById('inputBusqueda').value.trim().toLowerCase();
             if (!consulta) return;
 
-            // Buscar si lo que escribió el usuario coincide con alguna palabra clave
-            const productoEncontrado = baseDeDatosProductos.find(prod => 
-                prod.palabras.some(palabra => consulta.includes(palabra))
-            );
+            const productoEncontrado = baseDeDatosProductos.find(prod => prod.palabras.some(palabra => consulta.includes(palabra)) );
 
             if (productoEncontrado) {
-                // 🚀 REDIRECCIÓN DIRECTA A TU ENLACE
                 window.location.href = productoEncontrado.url;
             } else {
-                // Si escribe algo que no existe, ofrece enviar la consulta a WhatsApp
                 const confirmarContacto = confirm(`No encontramos resultados exactos para "${consulta}". ¿Te gustaría consultar disponibilidad por WhatsApp?`);
                 if (confirmarContacto) {
                     const textoMensaje = `Hola, vi tu catálogo y me interesa saber si tienes disponible: "${consulta}"`;
@@ -318,10 +565,10 @@
             }
         }
     </script>
-    <!-- Bloque de Derechos de Autor -->
-<footer class="pie-pagina">
-    <p>&copy; 2026 Daniel Rivera. Todos los derechos reservados.</p>
-</footer>
+
+    <footer class="pie-pagina">
+        <p>&copy; 2026 Daniel Rivera. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>

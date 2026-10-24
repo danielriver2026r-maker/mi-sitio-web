@@ -3,183 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Canguros y Pierneros</title>
+    <title>Mochilas Standards | Tienda Oficial</title>
+    <!-- Tipografía Inter: Limpia, moderna y altamente vendedora -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Variables globales */
-        :root {
-            --bg-principal: #f4f5f4;
-            --color-texto-oscuro: #2b3303;
-            --color-primario: #2e9200;
-            --color-secundario: #869e00;
-            --color-tarjeta-bg: #ffffff;
-            --texto-blanco: #ffffff;
-            --texto-gris: #eeeeee;
-        }
-
-        /* Estilos Generales */
-        body {
-            background-color: var(--bg-principal);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        /* Estilos Base inspirados en la naturaleza */
+        body { 
+            background-color: #fcfbfa; /* Fondo beige ultra suave para que las fotos resalten */
+            font-family: 'Inter', sans-serif;
+            color: #2c2520; /* Color café oscuro/tierra para los textos principales */
             margin: 0;
-            padding: 20px;
-            color: #333;
+            padding: 0;
         }
 
-        /* Barra de Navegación */
-        .navegacion {
+        /* Banner Superior con la imagen del bosque */
+        .hero-banner {
+            position: relative;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('image_9_bPPH.png');
+            background-size: cover;
+            background-position: center 30%;
+            height: 280px;
             display: flex;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 0 auto 30px auto;
-            padding: 10px 0;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        .navegacion a {
-            text-decoration: none;
-            transition: opacity 0.2s ease;
-        }
-
-        .navegacion a:hover {
-            opacity: 0.8;
-        }
-
-        .btn-volver {
-            color: #ff0303;
-        }
-
-        /* Encabezado */
-        header {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            max-width: 1200px;
-            margin: 0 auto 40px auto;
+            color: #ffffff;
+            padding: 0 20px;
         }
 
-        h1 {
-            color: var(--color-texto-oscuro);
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        /* Enlace de regreso dentro del banner */
+        .Daniel { 
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            margin: 0;
+        }
+        
+        .Daniel a {
+            color: #e0deda;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .Daniel a:hover {
+            color: #ffffff;
         }
 
-        .subtitulo {
-            color: var(--color-secundario);
+        /* Título Principal Imponente sobre el Bosque */
+        h1 { 
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0 0 10px 0;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            text-transform: uppercase;
+        }
+
+        .slogan {
             font-size: 1.1rem;
-            font-weight: normal;
+            font-weight: 300;
+            color: #f4efe6;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
         }
 
-        /* Contenedor del Catálogo (Grid Responsivo) */
-        .galeria-contenedor {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
+        /* Contenedor principal de la tienda */
+        .tienda-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        /* Tarjeta de Producto */
-        .tarjeta-producto {
-            background-color: var(--color-tarjeta-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tarjeta-producto:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        /* Contenedor triple adaptado para albergar tres imágenes de forma ordenada */
-        .contenedor-imagenes-triple {
+        /* Cuadrícula de Productos Enfocada en las Fotos */
+        .contenedor-imagen { 
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr; /* Divide el espacio exactamente en 3 columnas iguales */
-            height: 220px;
-            background-color: #000;
-            gap: 2px; /* Línea divisoria muy fina entre las fotos */
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px; 
+            margin-bottom: 50px;
         }
 
-        .imagen-enlace {
-            display: block;
-            height: 100%;
+        /* Contenedor de la foto con sombra premium para e-commerce */
+        .paraZoom {
             overflow: hidden;
-            position: relative;
+            border-radius: 8px; 
+            background-color: #ffffff;
+            box-shadow: 0 15px 35px rgba(44, 37, 32, 0.06); 
+            transition: box-shadow 0.3s ease;
         }
 
-        .imagen-enlace img {
+        .paraZoom:hover {
+            box-shadow: 0 20px 45px rgba(44, 37, 32, 0.12);
+        }
+
+        /* FOTOS GRANDES */
+        .contenedor-imagen img { 
+            cursor: pointer; 
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover; 
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .paraZoom:hover img { 
+            transform: scale(1.04); 
+        }
+
+        /* Sección de Información del Producto */
+        .contenedor { 
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(44, 37, 32, 0.04);
+            border: 1px solid #f0ede9;
+        }
+
+        .contenedor h2 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #1a1613;
+        }
+
+        .contenedor p { 
+            color: #615852; 
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        /* Botón de Venta */
+        .btn-compra {
+            display: inline-block;
+            background-color: #3e5c3e; 
+            color: #ffffff; 
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            padding: 16px 45px;
+            text-decoration: none;
+            border-radius: 6px;
+            box-shadow: 0 6px 20px rgba(62, 92, 62, 0.25);
+            transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+        }
+
+        .btn-compra:hover {
+            background-color: #2f472f;
+            box-shadow: 0 8px 25px rgba(62, 92, 62, 0.4);
+        }
+
+        .btn-compra:active {
+            transform: scale(0.98);
+        }
+
+        /* --- ESTILOS PARA EL ZOOM AL HACER CLIC (MODAL) --- */
+        .modal-zoom {
+            display: none; 
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease, filter 0.4s ease;
+            background-color: rgba(11, 10, 9, 0.95); 
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        /* EFECTO ROJIZO AL PASAR EL MOUSE (Tu efecto favorito) */
-        .imagen-enlace:hover img {
-            transform: scale(1.08);
-            filter: sepia(1) saturate(6) hue-rotate(-50deg);
-        }
-
-        /* Bloque de Información */
-        .descripcion-bloque {
-            padding: 20px;
-            background-color: var(--color-primario);
-            color: var(--texto-blanco);
-            flex-grow: 1;
+        .modal-zoom.mostrar {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            opacity: 1;
         }
 
-        .detalles-producto {
-            font-size: 0.95rem;
-            color: var(--texto-gris);
-            line-height: 1.5;
-            text-align: justify;
-            margin: 0;
+        .modal-contenido {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 4px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            object-fit: contain;
+            cursor: default;
+        }
+
+        .modal-zoom.mostrar .modal-contenido {
+            transform: scale(1);
+        }
+
+        .btn-cerrar {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.2s;
+            user-select: none;
+        }
+
+        .btn-cerrar:hover {
+            color: #e0deda;
         }
     </style>
 </head>
 <body>
 
-    <!-- Menú de navegación limpio -->
-    <nav class="navegacion">
-        <a href="index.html" class="btn-volver">Volver al inicio</a>
-    </nav>
-
-    <header>
-        <h1>Línea de Canguros</h1>
-        <p class="subtitulo">Comodidad, resistencia y estilo para el día a día</p>
+    <!-- Encabezado con ambiente de Bosque y Sol -->
+    <header class="hero-banner">
+        <p class="Daniel">
+            <a href="index.html">← Inicio</a>
+        </p>
+        <h1>canguro</h1>
+        <div class="slogan">Diseñadas para el uso diario</div>
     </header>
 
-    <main class="galeria-contenedor">
+    <!-- Zona de Exhibición y Venta -->
+    <main class="tienda-container">
         
-        <!-- Modelo 1 (Con tres vistas del producto) -->
-        <article class="tarjeta-producto">
-            
-            <!-- Contenedor ordenado para tres imágenes -->
-            <div class="contenedor-imagenes-triple">
-                <div class="imagen-enlace">
-                    <img src="WhatsApp Image 2026-10-14 at 7.09.34 PM (3).jpeg" alt="Canguro Deportivo - Vista 1">
-                </div>
-                <div class="imagen-enlace">
-                    <img src="WhatsApp Image 2026-10-14 at 7.09.34 PM (4).jpeg" alt="Canguro Deportivo - Vista 2">
-                </div>
-                <div class="imagen-enlace">
-                    <img src="WhatsApp Image 2026-10-14 at 7.09.37 PM (2).jpeg" alt="Canguro Deportivo - Vista 3">
-                </div>
+        <!-- Galería de imágenes adaptables -->
+        <div class="contenedor-imagen">
+            <div class="paraZoom">
+                <img src="WhatsApp Image 2026-10-14 at 7.09.34 PM (3).jpeg" alt="Mochila Standard - Vista Frontal Completa" class="img-zoomable">
             </div>
-            
-            <div class="descripcion-bloque">
-                <p class="detalles-producto">
-                    Canguro ideal para actividades al aire libre o deportes. Cuenta con múltiples compartimentos reforzados y un ajuste perfecto a la cintura para mayor comodidad en movimiento.
-                </p>
+        
+
+            <div class="paraZoom">
+                <img src="WhatsApp Image 2026-10-14 at 7.09.34 PM (4).jpeg" alt="Mochila Standard - Vista Frontal Completa" class="img-zoomable">
             </div>
-        </article>
-    
+        
+
+
+        </div>
+
+        <!-- Ficha de Producto y Botón Destacado -->
+        <div class="contenedor">
+            <h2>canguro viene el 2 colores verde oliva y negro</h2>
+            <p>canguro con acabados de alta resistencia. El equilibrio perfecto y funcionalidad para tus rutas urbanas o al aire libre.</p>
+            
+            <!-- Enlace corregido a WhatsApp con número 3151695019 -->
+            <a href="https://wa.me?" 
+               target="_blank" 
+               class="btn-compra">
+               Comprar Ahora
+            </a>
+        </div>
+        
     </main>
+
+    <!-- Estructura oculta para el visor de fotos (Zoom) -->
+    <div id="modalZoom" class="modal-zoom">
+        <span class="btn-cerrar" id="cerrarModal">&times;</span>
+        <img class="modal-contenido" id="imgModal">
+    </div>
+
+    <!-- Lógica del Zoom interactivo en JavaScript -->
+    <script>
+        const modal = document.getElementById('modalZoom');
+        const imgModal = document.getElementById('imgModal');
+        const btnCerrar = document.getElementById('cerrarModal');
+        const imagenes = document.querySelectorAll('.img-zoomable');
+
+        // Abrir visor de fotos en pantalla completa al hacer clic
+        imagenes.forEach(imagen => {
+            imagen.addEventListener('click', (e) => {
+                modal.classList.add('mostrar');
+                imgModal.src = e.target.src;
+                imgModal.alt = e.target.alt;
+                document.body.style.overflow = 'hidden'; // Bloquea scroll de fondo
+            });
+        });
+
+        // Minimizar y cerrar el visor
+        function cerrarZoom() {
+            modal.classList.remove('mostrar');
+            document.body.style.overflow = ''; // Habilita de nuevo el scroll
+        }
+
+        btnCerrar.addEventListener('click', cerrarZoom);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                cerrarZoom();
+            }
+        });
+
+        // Cerrar también usando el teclado con la tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                cerrarZoom();
+            }
+        });
+    </script>
 
 </body>
 </html>
