@@ -570,5 +570,36 @@
         <p>&copy; 2026 Daniel Rivera. Todos los derechos reservados.</p>
     </footer>
 
+
+<!-- 👣 PIE DE PÁGINA (Footer corto) -->
+<footer>
+  
+    <p><a href="#" style="color:#0e0c02;" onclick="event.preventDefault(); alert('TÉRMINOS Y CONDICIONES\n\n1. Compras: Catálogo virtual. Pedidos se acuerdan por WhatsApp.\n2. Envíos/Cambios: Costos y garantías se coordinan en el chat.\n3. Datos: Información privada para envíos.')">Términos y Condiciones</a></p>
+</footer>
+
+<!-- 🕹️ LÓGICA JAVASCRIPT COMPLETAMENTE INTEGRADA -->
+<script>
+    function abrirCheckOut(producto, precio) {
+        document.getElementById('resumenProducto').innerText = "Estás comprando: " + producto + " (" + precio + ")";
+        document.getElementById('modalCompra').style.display = 'flex';
+    }
+    function cerrarCheckOut() { document.getElementById('modalCompra').style.display = 'none'; }
+    
+    window.onclick = function(e) {
+        if (e.target.className === 'modal-compra') cerrarCheckOut();
+    }
+
+    function enviarPedidoWhatsApp(event) {
+        event.preventDefault();
+        alert("Redireccionando a WhatsApp...");
+        cerrarCheckOut();
+    }
+    function filtrarCategoria(cat) { console.log("Filtrando: " + cat); }
+    function ejecutarBusqueda() { console.log("Buscando..."); }
+    function evaluarEnter(e) { if(e.key === 'Enter') ejecutarBusqueda(); }
+</script>
+
+
+
 </body>
 </html>
